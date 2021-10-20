@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="franquia_leads_view" model="ir.ui.view">
+        <field name="name">franquia.leads.view</field>
+        <field name="model">franquia.leads</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="CNPJ" />
+                <field name="NOME_EMPRESARIAL" />
+                <field name="LOGRADOURO" />
+                <field name="COMPLEMENTO" />
+                <field name="BAIRRO" />
+                <field name="MUNICIPIO" />
+                <field name="UF" />
+                <field name="CEP" />
+                <field name="TELEFONE" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="franquia_leads_view" model="ir.ui.view">
+        <field name="name">franquia.leads.view</field>
+        <field name="model">franquia.leads</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="CNPJ" />
+                        <field name="NOME_EMPRESARIAL" />
+                        <field name="LOGRADOURO" />
+                        <field name="COMPLEMENTO" />
+                        <field name="BAIRRO" />
+                        <field name="MUNICIPIO" />
+                        <field name="UF" />
+                        <field name="CEP" />
+                        <field name="TELEFONE" />
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_franquia_leads" model="ir.actions.act_window">
+        <field name="name">Leads</field>
+        <field name="res_model">franquia.leads</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="franquia_leads_filter_view" model="ir.ui.view">
+            <field name="name">Leads</field>
+            <field name="model">franquia.leads</field>
+            <field name="arch" type="xml">
+                <search string="Busca">
+                    <field name="CNPJ" />
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter name="MUNICIPIO" string="Municipio" context="{'group_by': 'MUNICIPIO'}"/>
+                        <filter name="UF" string="UF" context="{'group_by': 'UF'}"/>
+                    </group>
+                </search>
+            </field>
+    </record>
+
+    <menuitem id="franquia_leads_root_menu" name="Leads Oi" />
+    <menuitem id="franquia_leads_sub_menu" parent="franquia_leads_root_menu" name="franquia"/>
+    <menuitem id="franquia_leads_menu" action="action_franquia_leads" parent="franquia_leads_sub_menu"/>
+</odoo>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="viabilidade_list_view" model="ir.ui.view">
+        <field name="name">viabilidade.list.view</field>
+        <field name="model">viabilidade.dados</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="identificacao"/>
+                <field name="nome_cdo"/>
+                <field name="celula" />
+                <field name="estacao_abastecedora"/>
+                <field name="bairro"/>
+                <field name="municipio"/>
+                <field name="uf"/>
+                <field name="cep"/>
+                <field name="tipo_viabilidade"/>
+                <field name="disp_comercial"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="viabilidade_form_view" model="ir.ui.view">
+        <field name="name">viabilidade.form.view</field>
+        <field name="model">viabilidade.dados</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="identificacao"/>
+                        <field name="nome_cdo"/>
+                        <field name="celula" />
+                        <field name="estacao_abastecedora"/>
+                        <field name="bairro"/>
+                        <field name="municipio"/>
+                        <field name="uf"/>
+                        <field name="cep"/>
+                        <field name="tipo_viabilidade"/>
+                        <field name="disp_comercial"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_viabilidade" model="ir.actions.act_window">
+        <field name="name">Viabilidade</field>
+        <field name="res_model">viabilidade.dados</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="viabilidade_filter_view" model="ir.ui.view">
+            <field name="name">Viabilidade</field>
+            <field name="model">viabilidade.dados</field>
+            <field name="arch" type="xml">
+                <search string="Busca Viabilidade">
+                    <field name="identificacao"/>
+                    <field name="municipio"/>
+                    <field name="celula"/>
+                    <field name="estacao_abastecedora"/>
+                    <field name="cep"/>
+                    <field name="uf"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter name="municipio" string="Municipio" context="{'group_by': 'municipio'}"/>
+                        <filter name="estacao_abastecedora" string="Estação Abastecedora" context="{'group_by': 'estacao_abastecedora'}"/>
+                        <filter name="cep" string="CEP" context="{'group_by': 'cep'}"/>
+                        <filter name="uf" string="UF" context="{'group_by': 'uf'}"/>
+                    </group>
+                </search>
+            </field>
+    </record>
+
+    <menuitem id="viabilidade_root_menu" name="Viabilidade" />
+    <menuitem id="viabilidade_sub_menu" parent="viabilidade_root_menu" name="Viabilidade"/>
+    <menuitem id="viabilidade_dados_menu" action="action_viabilidade" parent="viabilidade_sub_menu"/>
+</odoo>
